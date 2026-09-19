@@ -1,0 +1,122 @@
+from pathlib import Path
+
+html = """<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#fff7fb">
+<title>Ester & Umay — Bizim Küçük Dünyamız</title>
+<style>
+:root{--bg:#fff9fc;--ink:#302838;--muted:#756c7d;--pink:#e58aaa;--purple:#9a86d5;--line:#eadfe8;--white:#fff;--shadow:0 18px 55px #5e456e18}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.65;background:radial-gradient(circle at 10% 0,#ffe7f0,transparent 28%),radial-gradient(circle at 92% 8%,#eee8ff,transparent 30%),var(--bg)}
+a{text-decoration:none;color:inherit}.wrap{width:min(1120px,92%);margin:auto}
+header{position:fixed;z-index:10;top:0;width:100%;background:#fff9fcbb;backdrop-filter:blur(18px);border-bottom:1px solid #eadfe888}
+.nav{height:70px;display:flex;align-items:center;justify-content:space-between}.logo{font-weight:900;letter-spacing:-.04em}.logo b{color:var(--pink)}nav{display:flex;gap:24px;color:var(--muted);font-size:.92rem}nav a:hover{color:var(--ink)}
+.hero{min-height:100vh;display:grid;place-items:center;text-align:center;padding:110px 0 70px}.hero>div{max-width:850px}
+.badge{display:inline-block;padding:7px 14px;border:1px solid var(--line);border-radius:99px;background:#ffffff99;color:var(--muted);font-size:.84rem}
+h1{font-size:clamp(3.3rem,9vw,7rem);line-height:.92;letter-spacing:-.08em;margin:25px 0 20px}.gradient{background:linear-gradient(100deg,var(--pink),var(--purple));color:transparent;background-clip:text;-webkit-background-clip:text}.hero p{max-width:650px;margin:auto;color:var(--muted);font-size:1.1rem}.scroll{margin-top:32px;color:var(--muted);font-size:.85rem}
+section{padding:105px 0}.eyebrow{font-size:.74rem;text-transform:uppercase;letter-spacing:.17em;font-weight:850;color:var(--pink)}h2{font-size:clamp(2rem,5vw,3.2rem);line-height:1.05;letter-spacing:-.055em;margin:7px 0}.lead{color:var(--muted);max-width:680px;margin:0 0 32px}
+.grid,.letters{display:grid;grid-template-columns:1fr 1fr;gap:22px}.card{background:#ffffffc9;border:1px solid #fff;box-shadow:var(--shadow);border-radius:28px;padding:30px;backdrop-filter:blur(12px)}
+.person{min-height:320px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between}.person:after{content:"";position:absolute;width:190px;height:190px;border-radius:50%;right:-70px;top:-70px;background:#e58aaa1d}.person.umay:after{background:#9a86d51d}.avatar{width:74px;height:74px;border-radius:23px;display:grid;place-items:center;font-size:2rem;background:#fff;border:1px solid var(--line)}h3{margin:18px 0 5px;font-size:1.55rem;letter-spacing:-.04em}.person p,.letter p{color:var(--muted)}.tag{align-self:flex-start;background:#fff;border:1px solid var(--line);border-radius:99px;padding:6px 11px;color:var(--muted);font-size:.77rem}
+.timeline{position:relative}.timeline:before{content:"";position:absolute;left:18px;top:10px;bottom:10px;width:2px;background:linear-gradient(var(--pink),var(--purple));opacity:.3}.event{display:grid;grid-template-columns:40px 1fr;gap:18px;margin:0 0 25px}.dot{z-index:1;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:#fff;border:1px solid var(--line)}.event-card{background:#ffffffb8;border:1px solid var(--line);border-radius:20px;padding:19px 21px}.event-card span{color:var(--pink);font-weight:800;font-size:.78rem}.event-card strong{display:block;margin:3px 0}
+.letter{padding:30px}.icon{font-size:2rem}.locked{margin-top:18px;padding:17px;border-radius:18px;background:#faf5fa;border:1px dashed #d8cbdc}.locked small{display:block;color:var(--muted);margin-bottom:9px}.locked input{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:11px;background:#fff;font:inherit;outline:0}.locked button{width:100%;padding:11px;margin-top:8px;border:0;border-radius:11px;background:var(--ink);color:#fff;font-weight:800;cursor:pointer}.msg{font-size:.83rem;min-height:1.3em;margin-top:8px}.letter-body{display:none;white-space:pre-line;background:#fff;border-radius:16px;padding:18px;margin-top:12px}
+footer{text-align:center;color:var(--muted);padding:55px 0 75px;font-size:.88rem}
+@media(max-width:700px){nav{display:none}.grid,.letters{grid-template-columns:1fr}section{padding:78px 0}.card{padding:24px}.nav{height:64px}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav"><a class="logo" href="#home">Ester <b>&</b> Umay</a><nav><a href="#kizlar">Kızlarımız</a><a href="#buyurken">Büyürken</a><a href="#mektuplar">Mektuplar</a></nav></div></header>
+
+<main>
+<section class="hero" id="home"><div><span class="badge">Dayısından, yıllar boyunca saklanacak özel bir dünya</span><h1>Bizim <span class="gradient">Küçük Dünyamız</span></h1><p>Ester Mine ve Umay için hazırlanmış; çocukluklarından geleceğe uzanan sevgi dolu bir hatıra köşesi.</p><div class="scroll">↓ Keşfet</div></div></section>
+
+<section id="kizlar"><div class="wrap"><div class="eyebrow">İki güzel hikâye</div><h2>Ester & Umay</h2><p class="lead">İkisinin de kendine ait bir dünyası var. Bu site, onlar büyüdükçe birlikte büyüyecek.</p>
+<div class="grid">
+<article class="card person"><div><div class="avatar">🌸</div><h3>Ester Mine</h3><p>Gülüşü, merakları ve çocukluğunun güzel anıları için ayrılmış özel bölüm.</p></div><span class="tag">Ester'in dünyası</span></article>
+<article class="card person umay"><div><div class="avatar">🌙</div><h3>Umay</h3><p>Küçücük başlangıçlardan gelecekteki büyük hayallere uzanan tatlı bir yolculuk.</p></div><span class="tag">Umay'ın dünyası</span></article>
+</div></div></section>
+
+<section id="buyurken"><div class="wrap"><div class="eyebrow">Zaman geçerken</div><h2>Büyürken</h2><p class="lead">Önemli günler, komik anlar, okul heyecanları ve küçük başarılar zamanla buraya eklenebilir.</p>
+<div class="timeline">
+<div class="event"><div class="dot">✨</div><div class="event-card"><span>BAŞLANGIÇ</span><strong>Bu küçük dünya bugün açıldı.</strong><p>Hatıralar zamanla eklenecek ve site onların çocukluğuyla birlikte büyüyecek.</p></div></div>
+<div class="event"><div class="dot">🎒</div><div class="event-card"><span>GELECEK</span><strong>Okul ve yeni maceralar</strong><p>Yeni arkadaşlıklar, başarılar ve unutulmayacak günler için.</p></div></div>
+<div class="event"><div class="dot">🌟</div><div class="event-card"><span>BİR GÜN</span><strong>Büyük hayaller</strong><p>Ne olmak isterlerse istesinler, bu bölüm onların yolculuğuna eşlik edecek.</p></div></div>
+</div></div></section>
+
+<section id="mektuplar"><div class="wrap"><div class="eyebrow">Geleceğe bırakıldı</div><h2>Dayısından Mektuplar</h2><p class="lead">Mektuplar belirlenen tarihten önce açılmaz. Doğum tarihleri belli olduğunda kilit tarihlerini aşağıdaki koddan güncelleyebilirsin.</p>
+<div class="letters">
+<article class="card letter"><div class="icon">💌</div><h3>Ester Mine'ye</h3><p>15. yaşında okuması için saklanan özel mektup.</p><div class="locked"><small>🔒 Anahtar + doğru tarih gerekli</small><input id="ek" type="password" placeholder="Gizli anahtarı gir"><button onclick="openLetter('ester')">Mektubu Kontrol Et</button><div class="msg" id="em"></div><div class="letter-body" id="eb">Sevgili Ester Mine,
+
+Eğer bu mektubu okuyorsan, artık küçük Ester Mine değilsin. 😊
+
+Ben bu satırları sen daha küçücükken yazıyorum. Bir gün bu siteyi açacağını düşünerek sana söylemek istediğim ilk şey şu:
+
+Seni çok seviyorum.
+
+Gülüşünü, oyunlarını, konuşmalarını ve birlikte geçirdiğimiz güzel zamanları unutmanı istemiyorum. Bu siteyi, çocukluğunun o güzel hâlini yıllar sonra da hatırlayabilmen için hazırladım.
+
+Belki bir gün “Gerçekten ben böyle miydim?” diyeceksin. 😄
+Evet, sendin.
+
+Hayatta hangi hayalin peşinden gideceğini bilmiyorum. Ama ne olursa olsun kendine güvenmeni, iyi kalpli olmanı ve sevdiğin insanların kıymetini bilmeyi unutma.
+
+Umarım büyüdüğünde de yüzünde o güzel gülümseme vardır.
+
+İyi ki varsın Ester Mine.
+
+Seni çok seven dayından. ❤️
+
+Tarih: 2026
+Bu mektup Ester Mine'nin 15. yaşında okunmak üzere yazılmıştır.</div></div></article>
+
+<article class="card letter"><div class="icon">🌙</div><h3>Umay'a</h3><p>15. yaşında okuması için saklanan özel mektup.</p><div class="locked"><small>🔒 Anahtar + doğru tarih gerekli</small><input id="uk" type="password" placeholder="Gizli anahtarı gir"><button onclick="openLetter('umay')">Mektubu Kontrol Et</button><div class="msg" id="um"></div><div class="letter-body" id="ub">Sevgili Umay,
+
+Bu mektubu yazdığımda sen daha küçücük bir çocuksun.
+
+Belki şu anda bu harfleri okuyamıyorsun. Ama bir gün büyüyüp bu siteyi açacağını düşünerek sana birkaç kelime bırakmak istedim.
+
+Bir gün küçücük ellerin büyüyecek, okula gidecek, yeni insanlar tanıyacak ve kendi hayallerinin peşinden koşacaksın.
+
+Belki bu sitede çocukluğundan kalan fotoğraflara ve anılara bakıp güleceksin. O küçük Umay'ı sakın unutma. Çünkü o küçük kız, senin hikâyenin en güzel başlangıçlarından biri.
+
+Hayatında ne olursa olsun iyi bir insan olmaya çalış. İnsanlara değer ver, aileni sev, kendine inan ve hayallerinden kolayca vazgeçme.
+
+Büyümek bazen güzel, bazen zor olabilir. Ama ne yaşarsan yaşa, seni seven insanların olduğunu unutma.
+
+Ben de onlardan biri olacağım.
+
+İyi ki dünyaya geldin Umay.
+İyi ki benim yeğenimsin.
+
+Seni çok seven dayından. ❤️
+
+Tarih: 2026
+Bu mektup Umay'ın 15. yaşında okunmak üzere yazılmıştır.</div></div></article>
+</div></div></section>
+</main>
+
+<footer><div class="wrap">Ester & Umay'ın Dünyası · Sevgiyle, dayısından ❤️</div></footer>
+
+<script>
+/*
+  GERÇEK DOĞUM TARİHLERİNİ BİLDİĞİNDE:
+  Örneğin doğum tarihi 2022-05-24 ise 15. yaş tarihi 2037-05-24 olur.
+*/
+const cfg={
+ ester:{date:"2037-01-01",key:"EsterinGulusu",input:"ek",msg:"em",body:"eb"},
+ umay:{date:"2040-01-01",key:"UmayinMasali",input:"uk",msg:"um",body:"ub"}
+};
+function openLetter(w){
+ const c=cfg[w], input=document.getElementById(c.input), msg=document.getElementById(c.msg), body=document.getElementById(c.body);
+ if(input.value!==c.key){msg.textContent="Anahtar yanlış. Mektup açılmadı.";return}
+ if(new Date()<new Date(c.date+"T00:00:00")){msg.textContent="Anahtar doğru, fakat mektubun zamanı henüz gelmedi. 🔒";return}
+ body.style.display="block";msg.textContent="Kilit açıldı. ❤️";
+}
+</script>
+</body>
+</html>"""
+
+p=Path("/mnt/data/Ester_Umay_Dunyasi.html")
+p.write_text(html,encoding="utf-8")
+print(p)
