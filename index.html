@@ -107,8 +107,8 @@ umay:{key:"UmayinMasali",input:"uk",msg:"um",body:"ub"}
 };
 function openLetter(w){
  const c=cfg[w], input=document.getElementById(c.input), msg=document.getElementById(c.msg), body=document.getElementById(c.body);
- if(input.value!==c.key){msg.textContent="Anahtar yanlış. Mektup açılmadı.";return
- body.style.display="block";msg.textContent="Kilit açıldı. ❤️";
+if(input.value!==c.key){msg.textContent="Anahtar yanlış. Mektup açılmadı.";return}
+body.style.display="block";msg.textContent="Kilit açıldı. ❤️";
 }
 </script>
 </body>
