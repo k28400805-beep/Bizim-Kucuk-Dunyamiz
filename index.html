@@ -104,13 +104,13 @@ Bu mektup Umay'ın 15. yaşında okunmak üzere yazılmıştır.</div></div></ar
   Örneğin doğum tarihi 2022-05-24 ise 15. yaş tarihi 2037-05-24 olur.
 */
 const cfg={
- ester:{date:"2037-01-01",key:"EsterinGulusu",input:"ek",msg:"em",body:"eb"},
- umay:{date:"2040-01-01",key:"UmayinMasali",input:"uk",msg:"um",body:"ub"}
+ester:{key:"EsterinGulusu",input:"ek",msg:"em",body:"eb"},
+umay:{key:"UmayinMasali",input:"uk",msg:"um",body:"ub"}
+};
 };
 function openLetter(w){
  const c=cfg[w], input=document.getElementById(c.input), msg=document.getElementById(c.msg), body=document.getElementById(c.body);
- if(input.value!==c.key){msg.textContent="Anahtar yanlış. Mektup açılmadı.";return}
- if(new Date()<new Date(c.date+"T00:00:00")){msg.textContent="Anahtar doğru, fakat mektubun zamanı henüz gelmedi. 🔒";return}
+ if(input.value!==c.key){msg.textContent="Anahtar yanlış. Mektup açılmadı.";return
  body.style.display="block";msg.textContent="Kilit açıldı. ❤️";
 }
 </script>
