@@ -1,6 +1,4 @@
-from pathlib import Path
-
-html = """<!doctype html>
+<!doctype html>
 <html lang="tr">
 <head>
 <meta charset="utf-8">
@@ -44,9 +42,10 @@ footer{text-align:center;color:var(--muted);padding:55px 0 75px;font-size:.88rem
 <div class="event"><div class="dot">🌟</div><div class="event-card"><span>BİR GÜN</span><strong>Büyük hayaller</strong><p>Ne olmak isterlerse istesinler, bu bölüm onların yolculuğuna eşlik edecek.</p></div></div>
 </div></div></section>
 
-<section id="mektuplar"><div class="wrap"><div class="eyebrow">Geleceğe bırakıldı</div><h2>Dayısından Mektuplar</h2><p class="lead">Mektuplar belirlenen tarihten önce açılmaz. Doğum tarihleri belli olduğunda kilit tarihlerini aşağıdaki koddan güncelleyebilirsin.</p>
+<section id="mektuplar"><div class="wrap"><div class="eyebrow">Geleceğe bırakıldı</div><h2>Dayısından Mektuplar</h2><p class="lead">Mektuplar yalnızca kendilerine ait gizli anahtarla açılır.</p>
 <div class="letters">
-<article class="card letter"><div class="icon">💌</div><h3>Ester Mine'ye</h3><p>15. yaşında okuması için saklanan özel mektup.</p><div class="locked"><small>🔒 Anahtar + doğru tarih gerekli</small><input id="ek" type="password" placeholder="Gizli anahtarı gir"><button onclick="openLetter('ester')">Mektubu Kontrol Et</button><div class="msg" id="em"></div><div class="letter-body" id="eb">Sevgili Ester Mine,
+
+<article class="card letter"><div class="icon">💌</div><h3>Ester Mine'ye</h3><p>15. yaşında okuması için saklanan özel mektup.</p><div class="locked"><small>🔒 Yalnızca gizli anahtar gerekli</small><input id="ek" type="password" placeholder="Gizli anahtarı gir"><button onclick="openLetter('ester')">Mektubu Aç</button><div class="msg" id="em"></div><div class="letter-body" id="eb">Sevgili Ester Mine,
 
 Eğer bu mektubu okuyorsan, artık küçük Ester Mine değilsin. 😊
 
@@ -70,7 +69,7 @@ Seni çok seven dayından. ❤️
 Tarih: 2026
 Bu mektup Ester Mine'nin 15. yaşında okunmak üzere yazılmıştır.</div></div></article>
 
-<article class="card letter"><div class="icon">🌙</div><h3>Umay'a</h3><p>15. yaşında okuması için saklanan özel mektup.</p><div class="locked"><small>🔒 Anahtar + doğru tarih gerekli</small><input id="uk" type="password" placeholder="Gizli anahtarı gir"><button onclick="openLetter('umay')">Mektubu Kontrol Et</button><div class="msg" id="um"></div><div class="letter-body" id="ub">Sevgili Umay,
+<article class="card letter"><div class="icon">🌙</div><h3>Umay'a</h3><p>15. yaşında okuması için saklanan özel mektup.</p><div class="locked"><small>🔒 Yalnızca gizli anahtar gerekli</small><input id="uk" type="password" placeholder="Gizli anahtarı gir"><button onclick="openLetter('umay')">Mektubu Aç</button><div class="msg" id="um"></div><div class="letter-body" id="ub">Sevgili Umay,
 
 Bu mektubu yazdığımda sen daha küçücük bir çocuksun.
 
@@ -93,27 +92,32 @@ Seni çok seven dayından. ❤️
 
 Tarih: 2026
 Bu mektup Umay'ın 15. yaşında okunmak üzere yazılmıştır.</div></div></article>
+
 </div></div></section>
 </main>
 
 <footer><div class="wrap">Ester & Umay'ın Dünyası · Sevgiyle, dayısından ❤️</div></footer>
 
 <script>
-
 const cfg={
-ester:{key:"EsterinGulusu",input:"ek",msg:"em",body:"eb"},
-umay:{key:"UmayinMasali",input:"uk",msg:"um",body:"ub"}
+ ester:{key:"EsterinGulusu",input:"ek",msg:"em",body:"eb"},
+ umay:{key:"UmayinMasali",input:"uk",msg:"um",body:"ub"}
 };
-};
+
 function openLetter(w){
- const c=cfg[w], input=document.getElementById(c.input), msg=document.getElementById(c.msg), body=document.getElementById(c.body);
-if(input.value!==c.key){msg.textContent="Anahtar yanlış. Mektup açılmadı.";return}
-body.style.display="block";msg.textContent="Kilit açıldı. ❤️";
+ const c=cfg[w];
+ const input=document.getElementById(c.input);
+ const msg=document.getElementById(c.msg);
+ const body=document.getElementById(c.body);
+
+ if(input.value!==c.key){
+  msg.textContent="Anahtar yanlış. Mektup açılmadı.";
+  return;
+ }
+
+ body.style.display="block";
+ msg.textContent="Kilit açıldı. ❤️";
 }
 </script>
 </body>
-</html>"""
-
-p=Path("/mnt/data/Ester_Umay_Dunyasi.html")
-p.write_text(html,encoding="utf-8")
-print(p)
+</html>
